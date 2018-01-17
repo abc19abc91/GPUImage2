@@ -2,7 +2,9 @@ import UIKit
 
 // TODO: Add support for transparency
 // TODO: Deal with view resizing
-public class RenderView:UIView, ImageConsumer {
+//change by tb
+//public class RenderView:UIView, ImageConsumer {
+open class RenderView:UIView, ImageConsumer {
     public var backgroundRenderColor = Color.black
     public var fillMode = FillMode.preserveAspectRatio
     public var orientation:ImageOrientation = .portrait
@@ -30,7 +32,9 @@ public class RenderView:UIView, ImageConsumer {
         self.commonInit()
     }
 
-    override public class var layerClass:Swift.AnyClass {
+    //change by tb
+//    override public class var layerClass:Swift.AnyClass {
+    override open class var layerClass:Swift.AnyClass {
         get {
             return CAEAGLLayer.self
         }

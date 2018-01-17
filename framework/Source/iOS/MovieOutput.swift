@@ -5,7 +5,9 @@ public protocol AudioEncodingTarget {
     func processAudioBuffer(_ sampleBuffer:CMSampleBuffer)
 }
 
-public class MovieOutput: ImageConsumer, AudioEncodingTarget {
+//change by tb
+//public class MovieOutput: ImageConsumer, AudioEncodingTarget {
+open class MovieOutput: ImageConsumer, AudioEncodingTarget {
     public let sources = SourceContainer()
     public let maximumInputs:UInt = 1
     

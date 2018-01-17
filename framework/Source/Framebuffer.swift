@@ -32,9 +32,7 @@ public enum FramebufferTimingStyle {
         }
     }
     
-	//change by tb
-    //var timestamp:Timestamp? {
-    public var timestamp:Timestamp? {
+    var timestamp:Timestamp? {
         get {
             switch self {
                 case .stillImage: return nil
@@ -164,7 +162,9 @@ public class Framebuffer {
 
     weak var cache:FramebufferCache?
     var framebufferRetainCount = 0
-    func lock() {
+    //change by tb
+//    func lock() {
+    public func lock() {
         framebufferRetainCount += 1
     }
 

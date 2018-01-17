@@ -1,7 +1,9 @@
 import OpenGLES
 import UIKit
 
-public class PictureInput: ImageSource {
+//change by tb
+//public class PictureInput: ImageSource {
+open class PictureInput: ImageSource {
     public let targets = TargetContainer()
     var imageFramebuffer:Framebuffer!
     var hasProcessedImage:Bool = false
