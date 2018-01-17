@@ -42,7 +42,9 @@ open class BasicOperation: ImageProcessingOperation {
     public let targets = TargetContainer()
     public let sources = SourceContainer()
     var shader:ShaderProgram
-    var inputFramebuffers = [UInt:Framebuffer]()
+    //change by tb
+    //var inputFramebuffers = [UInt:Framebuffer]()
+    public var inputFramebuffers = [UInt:Framebuffer]()
     var renderFramebuffer:Framebuffer!
     var outputFramebuffer:Framebuffer { get { return renderFramebuffer } }
     let usesAspectRatio:Bool
