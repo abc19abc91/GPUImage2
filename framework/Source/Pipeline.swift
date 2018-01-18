@@ -16,12 +16,12 @@ public protocol ImageSource {
     
 }
 
-public extension ImageSource {
-    func readNextFrame() -> Bool {
+extension ImageSource {
+    public func readNextFrame() -> Bool {
         return false
     }
     
-    func cancel() -> Void {
+    public func cancel() -> Void {
         
     }
 }
