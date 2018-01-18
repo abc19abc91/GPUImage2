@@ -102,7 +102,19 @@ open class BasicOperation: ImageProcessingOperation {
             renderFrame()
             
             updateTargetsWithFramebuffer(outputFramebuffer)
+            
+            //change by tb
+            self.clearIncomingFramebuffers()
         }
+    }
+    
+    //change by tb
+    open func clearIncomingFramebuffers() {
+        for (_, framebuffer) in inputFramebuffers {
+            framebuffer.unlock()
+        }
+        
+        inputFramebuffers = [UInt:Framebuffer]()
     }
     
     func renderFrame() {
