@@ -104,7 +104,7 @@ open class RenderView:UIView, ImageConsumer {
         glViewport(0, 0, backingSize.width, backingSize.height)
     }
     
-    public func newFramebufferAvailable(_ framebuffer:Framebuffer, fromSourceIndex:UInt) {
+    open func newFramebufferAvailable(_ framebuffer:Framebuffer, fromSourceIndex:UInt) {
         if (displayFramebuffer == nil) {
             self.createDisplayFramebuffer()
         }

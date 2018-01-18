@@ -75,7 +75,7 @@ public class OpenGLContext: SerialDispatch {
     // MARK: -
     // MARK: Device capabilities
     
-    func supportsTextureCaches() -> Bool {
+    open func supportsTextureCaches() -> Bool {
 #if (arch(i386) || arch(x86_64)) && os(iOS)
         return false // Simulator glitches out on use of texture caches
 #else

@@ -11,21 +11,21 @@ open class MovieOutput: ImageConsumer, AudioEncodingTarget {
     public let sources = SourceContainer()
     public let maximumInputs:UInt = 1
     
-    let assetWriter:AVAssetWriter
-    let assetWriterVideoInput:AVAssetWriterInput
+    open let assetWriter:AVAssetWriter
+    open let assetWriterVideoInput:AVAssetWriterInput
     var assetWriterAudioInput:AVAssetWriterInput?
 
-    let assetWriterPixelBufferInput:AVAssetWriterInputPixelBufferAdaptor
+    open let assetWriterPixelBufferInput:AVAssetWriterInputPixelBufferAdaptor
     let size:Size
     let colorSwizzlingShader:ShaderProgram
-    private var isRecording = false
-    private var videoEncodingIsFinished = false
+    open var isRecording = false
+    open var videoEncodingIsFinished = false
     private var audioEncodingIsFinished = false
-    private var startTime:CMTime?
-    private var previousFrameTime = kCMTimeNegativeInfinity
+    open var startTime:CMTime?
+    open var previousFrameTime = kCMTimeNegativeInfinity
     private var previousAudioTime = kCMTimeNegativeInfinity
-    private var encodingLiveVideo:Bool
-    var pixelBuffer:CVPixelBuffer? = nil
+    open var encodingLiveVideo:Bool
+    open var pixelBuffer:CVPixelBuffer? = nil
     var renderFramebuffer:Framebuffer!
     
     public init(URL:Foundation.URL, size:Size, fileType:String = AVFileTypeQuickTimeMovie, liveVideo:Bool = false, settings:[String:AnyObject]? = nil) throws {
@@ -118,7 +118,7 @@ open class MovieOutput: ImageConsumer, AudioEncodingTarget {
         }
     }
     
-    public func newFramebufferAvailable(_ framebuffer:Framebuffer, fromSourceIndex:UInt) {
+    open func newFramebufferAvailable(_ framebuffer:Framebuffer, fromSourceIndex:UInt) {
         defer {
             framebuffer.unlock()
         }
@@ -160,7 +160,7 @@ open class MovieOutput: ImageConsumer, AudioEncodingTarget {
         }
     }
     
-    func renderIntoPixelBuffer(_ pixelBuffer:CVPixelBuffer, framebuffer:Framebuffer) {
+    open func renderIntoPixelBuffer(_ pixelBuffer:CVPixelBuffer, framebuffer:Framebuffer) {
         if !sharedImageProcessingContext.supportsTextureCaches() {
             renderFramebuffer = sharedImageProcessingContext.framebufferCache.requestFramebufferWithProperties(orientation:framebuffer.orientation, size:GLSize(self.size))
             renderFramebuffer.lock()

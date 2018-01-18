@@ -2,10 +2,30 @@
 // MARK: Basic types
 import Foundation
 
+//public protocol ImageSource {
+//    var targets:TargetContainer { get }
+//    func transmitPreviousImage(to target:ImageConsumer, atIndex:UInt)
+//}
+
+// start  Dean
 public protocol ImageSource {
     var targets:TargetContainer { get }
     func transmitPreviousImage(to target:ImageConsumer, atIndex:UInt)
+    func readNextFrame() -> Bool
+    func cancel()
+    
 }
+
+public extension ImageSource {
+    func readNextFrame() -> Bool {
+        return false
+    }
+    
+    func cancel() -> Void {
+        
+    }
+}
+// end  Dean
 
 public protocol ImageConsumer:AnyObject {
     var maximumInputs:UInt { get }
