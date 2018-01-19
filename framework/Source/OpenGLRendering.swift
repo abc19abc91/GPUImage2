@@ -155,7 +155,7 @@ func disableStencil() {
     glDisable(GLenum(GL_STENCIL_TEST))
 }
 
-func textureUnitForIndex(_ index:Int) -> GLenum {
+public func textureUnitForIndex(_ index:Int) -> GLenum {
     switch index {
         case 0: return GLenum(GL_TEXTURE0)
         case 1: return GLenum(GL_TEXTURE1)

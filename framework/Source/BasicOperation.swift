@@ -34,14 +34,14 @@ open class BasicOperation: ImageProcessingOperation {
         }
     }
     public var activatePassthroughOnNextFrame:Bool = false
-    public var uniformSettings = ShaderUniformSettings()
+    open var uniformSettings = ShaderUniformSettings()
 
     // MARK: -
     // MARK: Internal
 
     public let targets = TargetContainer()
     public let sources = SourceContainer()
-    var shader:ShaderProgram
+    open var shader:ShaderProgram
     //change by tb
     //var inputFramebuffers = [UInt:Framebuffer]()
     public var inputFramebuffers = [UInt:Framebuffer]()
@@ -137,7 +137,7 @@ open class BasicOperation: ImageProcessingOperation {
         }
     }
     
-    func internalRenderFunction(_ inputFramebuffer:Framebuffer, textureProperties:[InputTextureProperties]) {
+    open func internalRenderFunction(_ inputFramebuffer:Framebuffer, textureProperties:[InputTextureProperties]) {
         renderQuadWithShader(shader, uniformSettings:uniformSettings, vertexBufferObject:sharedImageProcessingContext.standardImageVBO, inputTextures:textureProperties)
         releaseIncomingFramebuffers()
     }

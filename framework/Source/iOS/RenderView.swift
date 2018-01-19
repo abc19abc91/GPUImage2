@@ -12,11 +12,11 @@ open class RenderView:UIView, ImageConsumer {
     
     public let sources = SourceContainer()
     public let maximumInputs:UInt = 1
-    var displayFramebuffer:GLuint?
-    var displayRenderbuffer:GLuint?
+    open var displayFramebuffer:GLuint?
+    open var displayRenderbuffer:GLuint?
     var backingSize = GLSize(width:0, height:0)
     
-    private lazy var displayShader:ShaderProgram = {
+    open lazy var displayShader:ShaderProgram = {
         return sharedImageProcessingContext.passthroughShader
     }()
 
@@ -52,7 +52,7 @@ open class RenderView:UIView, ImageConsumer {
         destroyDisplayFramebuffer()
     }
     
-    func createDisplayFramebuffer() {
+    open func createDisplayFramebuffer() {
         var newDisplayFramebuffer:GLuint = 0
         glGenFramebuffers(1, &newDisplayFramebuffer)
         displayFramebuffer = newDisplayFramebuffer
@@ -99,7 +99,7 @@ open class RenderView:UIView, ImageConsumer {
         }
     }
     
-    func activateDisplayFramebuffer() {
+    open func activateDisplayFramebuffer() {
         glBindFramebuffer(GLenum(GL_FRAMEBUFFER), displayFramebuffer!)
         glViewport(0, 0, backingSize.width, backingSize.height)
     }

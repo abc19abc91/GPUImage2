@@ -67,7 +67,7 @@ public class OpenGLContext: SerialDispatch {
         }
     }
     
-    func presentBufferForDisplay() {
+    open func presentBufferForDisplay() {
         self.context.presentRenderbuffer(Int(GL_RENDERBUFFER))
     }
     
