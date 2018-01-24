@@ -196,12 +196,20 @@ open class BasicOperation: ImageProcessingOperation {
         }
     }
     
+//    public func transmitPreviousImage(to target:ImageConsumer, atIndex:UInt) {
+//        sharedImageProcessingContext.runOperationAsynchronously{
+//            guard let renderFramebuffer = self.renderFramebuffer, (!renderFramebuffer.timingStyle.isTransient()) else { return }
+//
+//            renderFramebuffer.lock()
+//            target.newFramebufferAvailable(renderFramebuffer, fromSourceIndex:atIndex)
+//        }
+//    }
     public func transmitPreviousImage(to target:ImageConsumer, atIndex:UInt) {
-        sharedImageProcessingContext.runOperationAsynchronously{
-            guard let renderFramebuffer = self.renderFramebuffer, (!renderFramebuffer.timingStyle.isTransient()) else { return }
-            
-            renderFramebuffer.lock()
-            target.newFramebufferAvailable(renderFramebuffer, fromSourceIndex:atIndex)
-        }
+//        sharedImageProcessingContext.runOperationAsynchronously{
+//            guard let renderFramebuffer = self.renderFramebuffer, (!renderFramebuffer.timingStyle.isTransient()) else { return }
+//            
+//            renderFramebuffer.lock()
+//            target.newFramebufferAvailable(renderFramebuffer, fromSourceIndex:atIndex)
+//        }
     }
 }
