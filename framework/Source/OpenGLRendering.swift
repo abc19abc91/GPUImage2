@@ -97,7 +97,7 @@ public func renderQuadWithShader(_ shader:ShaderProgram, uniformSettings:ShaderU
                     glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
             }
         } else if (index == 0) {
-            fatalError("The required attribute named inputTextureCoordinate was missing from the shader program during rendering.")
+//            fatalError("The required attribute named inputTextureCoordinate was missing from the shader program during rendering.")
         }
         
         glActiveTexture(textureUnitForIndex(index))
