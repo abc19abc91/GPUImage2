@@ -54,7 +54,11 @@ public class OpenGLContext: SerialDispatch {
         generateTextureVBOs()
 
         glDisable(GLenum(GL_DEPTH_TEST))
-        glEnable(GLenum(GL_TEXTURE_2D))
+        //change by tb
+//        glEnable(GLenum(GL_TEXTURE_2D))
+        if self.context.api == .openGLES1 {
+            glEnable(GLenum(GL_TEXTURE_2D))
+        }
     }
     
     // MARK: -
