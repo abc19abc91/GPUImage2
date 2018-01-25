@@ -5,6 +5,7 @@ import UIKit
 var imageProcessingShareGroup:EAGLSharegroup? = nil
 
 public class OpenGLContext: SerialDispatch {
+    
     //change by tb
 //    lazy var framebufferCache:FramebufferCache = {
     public lazy var framebufferCache:FramebufferCache = {
@@ -30,8 +31,13 @@ public class OpenGLContext: SerialDispatch {
     public let serialDispatchQueue:DispatchQueue = DispatchQueue(label:"com.sunsetlakesoftware.GPUImage.processingQueue", attributes: [])
     public let dispatchQueueKey = DispatchSpecificKey<Int>()
     
+    
+    //add by tb
+    public var lock: NSLocking = NSRecursiveLock()
+    
     // MARK: -
     // MARK: Initialization and teardown
+    
 
     init() {
         serialDispatchQueue.setSpecific(key:dispatchQueueKey, value:81)
@@ -67,6 +73,8 @@ public class OpenGLContext: SerialDispatch {
     public func makeCurrentContext() {
         if (EAGLContext.current() != self.context)
         {
+            //change by tb, add log
+            print("makeCurrentContext: current:\(EAGLContext.current()), thread:\(Thread.current)")
             EAGLContext.setCurrent(self.context)
         }
     }

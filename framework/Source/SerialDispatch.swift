@@ -66,11 +66,19 @@ public protocol SerialDispatch {
     var serialDispatchQueue:DispatchQueue { get }
     var dispatchQueueKey:DispatchSpecificKey<Int> { get }
     func makeCurrentContext()
+    
+    //change by tb
+    var lock:NSLocking { get }
 }
 
 public extension SerialDispatch {
     public func runOperationAsynchronously(_ operation:@escaping () -> ()) {
         self.serialDispatchQueue.async {
+            //change by tb
+//            print("runOperationAsynchronously, thread:\(Thread.current)")
+            self.lock.lock() ; defer { self.lock.unlock() }
+            
+            
             self.makeCurrentContext()
             operation()
         }
@@ -82,6 +90,10 @@ public extension SerialDispatch {
             operation()
         } else {
             self.serialDispatchQueue.sync {
+                //change by tb
+//                print("runOperationSynchronously, thread:\(Thread.current)")
+                self.lock.lock() ; defer { self.lock.unlock() }
+                
                 self.makeCurrentContext()
                 operation()
             }
