@@ -15,7 +15,8 @@ open class BasicOperation: ImageProcessingOperation {
     public let maximumInputs:UInt
     public var overriddenOutputSize:Size?
     public var overriddenOutputRotation:Rotation?
-    public var backgroundColor = Color.black
+//    public var backgroundColor = Color.black
+    public var backgroundColor = Color.transparent
     public var drawUnmodifiedImageOutsideOfMask:Bool = true
     public var mask:ImageSource? {
         didSet {
