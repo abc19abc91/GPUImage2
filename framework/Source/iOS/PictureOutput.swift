@@ -95,9 +95,9 @@ public class PictureOutput: ImageConsumer {
     public func synchronousImageCapture() -> UIImage {
         var outputImage:UIImage!
         sharedImageProcessingContext.runOperationSynchronously{
-            guard let currentFramebuffer = storedFramebuffer else { fatalError("Synchronous access requires keepImageAroundForSynchronousCapture to be set to true") }
+            guard let currentFramebuffer = self.storedFramebuffer else { fatalError("Synchronous access requires keepImageAroundForSynchronousCapture to be set to true") }
             
-            let cgImageFromBytes = cgImageFromFramebuffer(currentFramebuffer)
+            let cgImageFromBytes = self.cgImageFromFramebuffer(currentFramebuffer)
             outputImage = UIImage(cgImage:cgImageFromBytes, scale:1.0, orientation:.up)
         }
         

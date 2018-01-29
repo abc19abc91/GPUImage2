@@ -19,7 +19,7 @@ public class FramebufferCache {
     let context:OpenGLContext
     
     //change by tb,是否启用缓存
-    fileprivate var useCache = true
+    fileprivate var useCache = false
     
     init(context:OpenGLContext) {
         self.context = context
