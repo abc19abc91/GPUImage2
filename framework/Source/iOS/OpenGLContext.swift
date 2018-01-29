@@ -60,14 +60,10 @@ public class OpenGLContext: SerialDispatch {
         generateTextureVBOs()
 
         glDisable(GLenum(GL_DEPTH_TEST))
-        //change by tb
-//        glEnable(GLenum(GL_TEXTURE_2D))
-        if self.context.api == .openGLES1 {
-            glEnable(GLenum(GL_TEXTURE_2D))
-        }
+        glEnable(GLenum(GL_TEXTURE_2D))
         
         //  wd 透明度变黑
-        glEnable(GLenum(GL_BLEND))
+        glEnable(GLenum(GL_BLEND))                                                                                                                                                                                                                                                                                                                                                                
         glEnable(GLenum(GL_ALPHA_TEST))
         glAlphaFunc(GLenum(GL_GREATER), 0.5)
         glBlendFunc(GLenum(GL_ONE), GLenum(GL_ONE_MINUS_SRC_ALPHA))
