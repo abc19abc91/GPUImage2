@@ -90,7 +90,8 @@ open class MovieOutput: ImageConsumer, AudioEncodingTarget {
     }
     
     public func finishRecording(_ completionCallback:(() -> Void)? = nil) {
-        sharedImageProcessingContext.runOperationSynchronously{
+        //如果用同步，会导致相互依赖列锁，合成线程需要主线程资源，主线程待等合成线程退出
+        sharedImageProcessingContext.runOperationAsynchronously{
             self.isRecording = false
             
             if (self.assetWriter.status == .completed || self.assetWriter.status == .cancelled || self.assetWriter.status == .unknown) {
