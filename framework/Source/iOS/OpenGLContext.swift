@@ -61,12 +61,12 @@ public class OpenGLContext: SerialDispatch {
 
         glDisable(GLenum(GL_DEPTH_TEST))
         glEnable(GLenum(GL_TEXTURE_2D))
-        
+
         //  wd 透明度变黑
-        glEnable(GLenum(GL_BLEND))                                                                                                                                                                                                                                                                                                                                                                
-        glEnable(GLenum(GL_ALPHA_TEST))
-        glAlphaFunc(GLenum(GL_GREATER), 0.5)
         glBlendFunc(GLenum(GL_ONE), GLenum(GL_ONE_MINUS_SRC_ALPHA))
+        glEnable(GLenum(GL_BLEND))
+        
+        
     }
     
     // MARK: -
